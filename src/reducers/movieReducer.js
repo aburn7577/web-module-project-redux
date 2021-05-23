@@ -22,9 +22,7 @@ const reducer = (state = initialState, action) => {
 				...state,
 				movies: [...state.movies,
 					newMovie
-
 				]
-
 			}
 		default:
 			return state;
