@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
 				...state,
 				movies: [...state.movies,
 					newMovie
-					// action.payload
+
 				]
 
 			}
