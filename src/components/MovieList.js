@@ -2,33 +2,41 @@ import React from 'react';
 
 import MovieListItem from './MovieListItem';
 import MovieFooter from './MovieFooter';
+import { connect } from 'react-redux';
 
-const MovieList = (props)=> {
-    const movies = [];
+const MovieList = (props) => {
+    //movie props
+    const moviesP = props.movies;
 
     return (
         <div className="col">
             <table className="table table-striped table-hover">
                 <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Director</th>
-                    <th>Genre</th>
-                    <th>Metascore</th>
-                    <th></th>
-                </tr>
+                    <tr>
+                        <th>Title</th>
+                        <th>Director</th>
+                        <th>Genre</th>
+                        <th>Metascore</th>
+                        <th></th>
+                    </tr>
                 </thead>
 
                 <tbody>
                     {
-                        movies.map(movie=><MovieListItem key={movie.id} movie={movie}/>)
+                        moviesP.map(movie => <MovieListItem key={movie.id} movie={movie} />)
                     }
                 </tbody>
             </table>
-            
-            <MovieFooter totalMovies={movies.length}/>
+
+            <MovieFooter totalMovies={moviesP.length} />
         </div>
     );
 }
+const mapStateToProps = state => {
+    return {
+        movies: state.movies
+    }
+}
 
-export default MovieList;
+
+export default connect(mapStateToProps, {})(MovieList);
